@@ -1,5 +1,7 @@
 package ru.tracker;
 
+import java.time.LocalDateTime;
+
 public class Item {
     private int id;
     private String name;
@@ -13,6 +15,10 @@ public class Item {
     }
 
     public Item() {
+    }
+
+    public static LocalDateTime created() {
+        return LocalDateTime.now();
     }
 
     public Item(String name) {
