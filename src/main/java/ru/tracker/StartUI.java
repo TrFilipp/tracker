@@ -1,13 +1,12 @@
 package ru.tracker;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class StartUI {
     public static void main(String[] args) {
-        LocalDateTime date = Item.created();
+        Item dateTimeNow = new Item();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
-        String currentDateTimeFormat = date.format(formatter);
-        System.out.println("Текущее дата и время: " + currentDateTimeFormat);
+        String currentDateTimeNow = dateTimeNow.getCreated().format(formatter);
+        System.out.println("Текущее дата и время: " + currentDateTimeNow);
     }
 }
