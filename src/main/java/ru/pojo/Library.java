@@ -23,5 +23,12 @@ public class Library {
             Book book = library[i];
             System.out.println(book.getName() + " - " + book.getPages());
         }
+        System.out.println("Show only book with name Clean code");
+        for (int i = 0; i < library.length; i++) {
+            Book book = library[i];
+            if (book.getName() == "Clean code") {
+                System.out.println(book.getName() + " - " + book.getPages());
+            }
+        }
     }
 }
