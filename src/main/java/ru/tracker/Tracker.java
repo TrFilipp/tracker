@@ -17,8 +17,8 @@ public class Tracker {
         Item[] rsl = new Item[size];
         int sizeOfRsl = 0;
         for (int i = 0; i < size; i++) {
-            Item applicationName = items[i];
-            rsl[sizeOfRsl++] = applicationName;
+            Item item = items[i];
+            rsl[sizeOfRsl++] = item;
         }
         rsl = Arrays.copyOf(rsl, sizeOfRsl);
         return rsl;
@@ -28,14 +28,25 @@ public class Tracker {
         Item[] rsl = new Item[size];
         int sizeOfRsl = 0;
         for (int i = 0; i < size; i++) {
-            Item applicationName = items[i];
-            if (key.equals(applicationName.getName())) {
-                rsl[sizeOfRsl++] = applicationName;
+            Item item = items[i];
+            if (key.equals(item.getName())) {
+                rsl[sizeOfRsl++] = item;
             }
         }
         rsl = Arrays.copyOf(rsl, sizeOfRsl);
         return rsl;
     }
+
+    /*public boolean replace(int id, Item item) {
+
+    }*/
+
+   /* private int indexOf(int id) {
+        int rsl = -1;
+        Item item = 
+        if ()
+        return rsl;
+    }*/
 
     public Item findById(int id) {
         Item rsl = null;
