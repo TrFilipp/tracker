@@ -52,8 +52,7 @@ public class Tracker {
     }
 
     public Item findById(int id) {
-        Item item = new Item();
         int index = indexOf(id);
-        return index != -1 ? item = items[index] : null;
+        return index != -1 ? items[index] : null;
     }
 }
