@@ -23,8 +23,8 @@ public class StartUI {
                 if (items.length == 0) {
                     System.out.println("Хранилище еще не содержит заявок");
                 } else {
-                    for (Item el: items) {
-                        System.out.println(el);
+                    for (Item item: items) {
+                        System.out.println(item);
                     }
                 }
             } else if (select == 6) {
