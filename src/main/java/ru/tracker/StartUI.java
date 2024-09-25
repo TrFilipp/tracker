@@ -40,6 +40,16 @@ public class StartUI {
                 } else {
                     System.out.println("Ошибка замены заявки.");
                 }
+            } else if (select == 3) {
+                System.out.println("=== Удаление заявки ===");
+                System.out.print("Введите id: ");
+                int id = Integer.parseInt(scanner.nextLine());
+                System.out.println("Вы уверены, что хотите удалить заявку с id " + id + "? (y/n)");
+                String answer = scanner.nextLine();
+                if (answer.equals("y")) {
+                    tracker.delete(id);
+                    System.out.println("Заявка успешно удалена");
+                }
             } else if (select == 6) {
                 run = false;
             }
