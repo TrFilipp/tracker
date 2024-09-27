@@ -55,7 +55,7 @@ public class StartUI {
                 if (item != null) {
                     System.out.println(item);
                 } else {
-                    System.out.println("Заявка не найдена");
+                    System.out.println("Заявка с введённым id: " + id + "не найдена");
                 }
             } else if (select == 6) {
                 run = false;
