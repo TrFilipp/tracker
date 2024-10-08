@@ -1,6 +1,5 @@
 package ru.tracker;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class StartUI {
@@ -59,15 +58,17 @@ public class StartUI {
                     System.out.println("Заявка с введённым id: " + id + "не найдена.");
                 }
             } else if (select == 5) {
-                System.out.println("=== Вывод заявки по имени ===");
+                System.out.println("=== Вывод заявок по имени ===");
                 System.out.print("Введите имя: ");
                 String name = scanner.nextLine();
                 Item[] item = tracker.findByName(name);
-                if (item == null) {
-                    System.out.println("Заявка с ввелённым именем: " + name +
-                            " не найдена.");
+                if (item.length == 0) {
+                    System.out.println("Заявки с именем: " + name +
+                            " не найдены.");
                 } else {
-                    System.out.println(Arrays.toString(item));
+                    for (Item items: item) {
+                        System.out.println(items);
+                    }
                 }
             } else if (select == 6) {
                 run = false;
