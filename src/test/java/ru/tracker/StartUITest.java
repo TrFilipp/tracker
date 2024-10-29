@@ -21,11 +21,11 @@ class StartUITest {
     @Test
     void whenReplaceItem() {
         Input input = new MockInput(
-                new String[] {"0", "Item name", "1", "1", "Item name_test", "2"}
+                new String[] {"0", "1", "Item name_test", "1"}
         );
         Tracker tracker = new Tracker();
+        tracker.add(new Item("Item name"));
         UserAction[] actions = {
-                new CreateAction(),
                 new ReplaceAction(),
                 new ExitAction()
         };
@@ -36,11 +36,11 @@ class StartUITest {
     @Test
     void whenDeleteItem() {
         Input input = new MockInput(
-                new String[] {"0", "Item_name", "1", "1", "2"}
+                new String[] {"0", "1", "1"}
         );
         Tracker tracker = new Tracker();
+        tracker.add(new Item("Item name"));
         UserAction[] actions = {
-                new CreateAction(),
                 new DeleteAction(),
                 new ExitAction()
         };
