@@ -21,7 +21,7 @@ class StartUITest {
     @Test
     void whenReplaceItem() {
         Input input = new MockInput(
-                new String[] {"0", "1", "Item name_test", "1"}
+                new String[] {"0", "1", "Item name test", "1"}
         );
         Tracker tracker = new Tracker();
         tracker.add(new Item("Item name"));
