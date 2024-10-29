@@ -30,7 +30,7 @@ class StartUITest {
                 new ExitAction()
         };
         new StartUI().init(input, tracker, actions);
-        assertThat(tracker.findAll()[0].getName()).isEqualTo("Item name_test");
+        assertThat(tracker.findAll()[0].getName()).isEqualTo("Item name test");
     }
 
     @Test
