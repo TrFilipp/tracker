@@ -36,7 +36,7 @@ class StartUITest {
     @Test
     void whenDeleteItem() {
         Input input = new MockInput(
-                new String[] {"0", "Item name", "1", "1", "2"}
+                new String[] {"0", "Item_name", "1", "1", "2"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
