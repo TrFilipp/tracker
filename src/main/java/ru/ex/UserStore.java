@@ -11,7 +11,7 @@ public class UserStore {
                 break;
             }
         }
-        if (!rsl.isValid()) {
+        if (rsl == null) {
             throw new UserNotFoundException("User not found");
         }
         return rsl;
@@ -20,7 +20,7 @@ public class UserStore {
     public static boolean validate(User user) throws UserInvalidException {
         boolean rsl = true;
         String username = user.getUsername();
-        if (!user.isValid() && username.length() < 3) {
+        if (!(user.isValid()) || username.length() < 3) {
             throw new UserInvalidException("User not validate");
         }
         return rsl;
