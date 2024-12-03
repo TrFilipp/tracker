@@ -1,10 +1,10 @@
 package ru.tracker.input;
 
-public class Mock implements Input {
+public class MockInput implements Input {
     public String[] answer;
     private int position = 0;
 
-    public Mock(String[] answer) {
+    public MockInput(String[] answer) {
         this.answer = answer;
     }
 

@@ -1,6 +1,6 @@
 package ru.tracker.output;
 
-public class Mock implements Output {
+public class MockOutput implements Output {
     private final StringBuilder buffer = new StringBuilder();
 
     @Override

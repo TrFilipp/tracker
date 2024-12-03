@@ -3,7 +3,8 @@ package ru.tracker;
 import org.junit.jupiter.api.Test;
 import ru.tracker.action.*;
 import ru.tracker.input.Input;
-import ru.tracker.output.Mock;
+import ru.tracker.input.MockInput;
+import ru.tracker.output.MockOutput;
 import ru.tracker.output.Output;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,8 +12,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 class StartUITest {
     @Test
     void whenCreateItem() {
-        Output output = new Mock();
-        Input input = new ru.tracker.input.Mock(
+        Output output = new MockOutput();
+        Input input = new MockInput(
                 new String[] {"0", "Item name", "1"}
         );
         Tracker tracker = new Tracker();
@@ -26,8 +27,8 @@ class StartUITest {
 
     @Test
     void whenReplaceItem() {
-        Output output = new Mock();
-        Input input = new ru.tracker.input.Mock(
+        Output output = new MockOutput();
+        Input input = new MockInput(
                 new String[] {"0", "1", "Item name test", "1"}
         );
         Tracker tracker = new Tracker();
@@ -42,8 +43,8 @@ class StartUITest {
 
     @Test
     void whenDeleteItem() {
-        Output output = new Mock();
-        Input input = new ru.tracker.input.Mock(
+        Output output = new MockOutput();
+        Input input = new MockInput(
                 new String[] {"0", "1", "1"}
         );
         Tracker tracker = new Tracker();
@@ -58,8 +59,8 @@ class StartUITest {
 
     @Test
     void whenExit() {
-        Output output = new Mock();
-        Input input = new ru.tracker.input.Mock(
+        Output output = new MockOutput();
+        Input input = new MockInput(
                 new String[] {"0"}
         );
         Tracker tracker = new Tracker();
@@ -76,11 +77,11 @@ class StartUITest {
 
     @Test
     void whenReplaceItemTestOutputIsSuccessfully() {
-        Output output = new Mock();
+        Output output = new MockOutput();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
         String replaceName = "New Test Name";
-        Input input = new ru.tracker.input.Mock(
+        Input input = new MockInput(
                 new String[] {"0", String.valueOf(one.getId()), replaceName, "1"}
         );
         UserAction[] actions = new UserAction[]{
@@ -104,12 +105,12 @@ class StartUITest {
 
    @Test
     void whenFindAllItemTestOutputIsSuccessfully() {
-        Output output = new Mock();
+        Output output = new MockOutput();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
         Item two = tracker.add(new Item("test2"));
         Item three = tracker.add(new Item("test3"));
-        Input input = new ru.tracker.input.Mock(
+        Input input = new MockInput(
                 new String[] {"0", "1"}
         );
         UserAction[] actions = new UserAction[]{
@@ -135,12 +136,12 @@ class StartUITest {
 
     @Test
     void whenFindByNameItemTestOutputIsSuccessfully() {
-        Output output = new Mock();
+        Output output = new MockOutput();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
         Item two = tracker.add(new Item("test2"));
         Item three = tracker.add(new Item("test1"));
-        Input input = new ru.tracker.input.Mock(
+        Input input = new MockInput(
                 new String[] {"0", String.valueOf(one.getName()), "1"}
         );
         UserAction[] actions = new UserAction[]{
@@ -165,12 +166,12 @@ class StartUITest {
 
     @Test
     void whenFindByIdItemTestOutputIsSuccessfully() {
-        Output output = new Mock();
+        Output output = new MockOutput();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
         Item two = tracker.add(new Item("test2"));
         Item three = tracker.add(new Item("test3"));
-        Input input = new ru.tracker.input.Mock(
+        Input input = new MockInput(
                 new String[] {"0", String.valueOf(two.getId()), "1"}
         );
         UserAction[] actions = new UserAction[]{
@@ -194,8 +195,8 @@ class StartUITest {
 
     @Test
     void whenInvalidExit() {
-        Output output = new Mock();
-        Input input = new ru.tracker.input.Mock(
+        Output output = new MockOutput();
+        Input input = new MockInput(
                 new String[] {"2", "0"}
         );
         Tracker tracker = new Tracker();
