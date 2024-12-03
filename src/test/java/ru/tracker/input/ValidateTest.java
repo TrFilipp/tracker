@@ -44,7 +44,7 @@ class ValidateTest {
     }
 
     @Test
-    void whenInvalidNegativeInput() {
+    void whenNegativeInput() {
         Output output = new ru.tracker.output.Mock();
         Input in = new Mock(
                 new String[] {"-1"}
