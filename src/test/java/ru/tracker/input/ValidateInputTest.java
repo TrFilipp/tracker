@@ -37,10 +37,10 @@ class ValidateInputTest {
         );
         ValidateInput input = new ValidateInput(output, in);
         int selectedFirst = input.askInt("Enter menu:");
-        assertThat(selectedFirst).isEqualTo(1);
         int selectedSecond = input.askInt("Enter menu:");
-        assertThat(selectedSecond).isEqualTo(3);
         int selectedThird = input.askInt("Enter menu:");
+        assertThat(selectedFirst).isEqualTo(1);
+        assertThat(selectedSecond).isEqualTo(3);
         assertThat(selectedThird).isEqualTo(4);
     }
 
