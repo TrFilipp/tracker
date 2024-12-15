@@ -11,35 +11,37 @@ public class PasswordValidator {
         if (password.length() < 8 || password.length() > 32) {
             throw new IllegalArgumentException("Password should be length [8, 32]");
         }
-        int letterUpper = 0;
-        int letterLower = 0;
-        int digit = 0;
-        char[] ch = password.toCharArray();
-        int specSymbol = 0;
-        for (int i = 0; i < password.length(); i++) {
-            if (!Character.isUpperCase(ch[i])) {
-                letterUpper++;
+        boolean letterUpper = false;
+        boolean letterLower = false;
+        boolean digit = false;
+        boolean specSymbol = false;
+        for (char ch: password.toCharArray()) {
+            if (Character.isUpperCase(ch)) {
+                letterUpper = true;
             }
-            if (!Character.isLowerCase(ch[i])) {
-                letterLower++;
+            if (Character.isLowerCase(ch)) {
+                letterLower = true;
             }
-            if (!Character.isDigit(ch[i])) {
-                digit++;
+            if (Character.isDigit(ch)) {
+                digit = true;
             }
-            if (!Character.isLetterOrDigit(ch[i])) {
-                specSymbol++;
+            if (!Character.isLetterOrDigit(ch)) {
+                specSymbol = true;
+            }
+            if (letterUpper && letterLower && digit && specSymbol) {
+                break;
             }
         }
-        if (letterUpper == password.length()) {
+        if (!letterUpper) {
             throw new IllegalArgumentException("Password should contain at least one uppercase letter");
         }
-        if (letterLower == password.length()) {
+        if (!letterLower) {
             throw new IllegalArgumentException("Password should contain at least one lowercase letter");
         }
-        if (digit == password.length()) {
+        if (!digit) {
             throw new IllegalArgumentException("Password should contain at least one figure");
         }
-        if (specSymbol == 0) {
+        if (!specSymbol) {
             throw new IllegalArgumentException("Password should contain at least one special symbol");
         }
         for (String words: FORBIDDEN) {
