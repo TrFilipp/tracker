@@ -14,19 +14,19 @@ public class PasswordValidator {
         int letterUpper = 0;
         int letterLower = 0;
         int digit = 0;
+        char[] ch = password.toCharArray();
         int specSymbol = 0;
-        for (int i = 0; i < password.length(); i++) { // верхний регистр
-            char ch = password.toCharArray()[i];
-            if (!Character.isUpperCase(ch)) {
+        for (int i = 0; i < password.length(); i++) {
+            if (!Character.isUpperCase(ch[i])) {
                 letterUpper++;
             }
-            if (!Character.isLowerCase(ch)) {
+            if (!Character.isLowerCase(ch[i])) {
                 letterLower++;
             }
-            if (!Character.isDigit(ch)) {
+            if (!Character.isDigit(ch[i])) {
                 digit++;
             }
-            if (!Character.isLetterOrDigit(ch)) {
+            if (!Character.isLetterOrDigit(ch[i])) {
                 specSymbol++;
             }
         }
