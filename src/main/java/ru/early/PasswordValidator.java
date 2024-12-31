@@ -16,6 +16,9 @@ public class PasswordValidator {
         boolean digit = false;
         boolean specSymbol = false;
         for (char ch: password.toCharArray()) {
+            if (letterUpper && letterLower && digit && specSymbol) {
+                break;
+            }
             if (Character.isUpperCase(ch)) {
                 letterUpper = true;
             }
@@ -27,9 +30,6 @@ public class PasswordValidator {
             }
             if (!Character.isLetterOrDigit(ch)) {
                 specSymbol = true;
-            }
-            if (letterUpper && letterLower && digit && specSymbol) {
-                break;
             }
         }
         if (!letterUpper) {
