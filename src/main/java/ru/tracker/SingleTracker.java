@@ -2,12 +2,18 @@ package ru.tracker;
 
 public final class SingleTracker {
 
-    private Tracker tracker = new Tracker();
-
     private static SingleTracker instance = null;
+    private Tracker tracker = new Tracker();
 
     private SingleTracker() {
 
+    }
+
+    public static SingleTracker getInstance() {
+        if (instance == null) {
+            instance = new SingleTracker();
+        }
+        return instance;
     }
 
     public Item add(Item item) {
@@ -34,10 +40,4 @@ public final class SingleTracker {
         return tracker.findByName(key);
     }
 
-    public static SingleTracker getInstance() {
-        if (instance == null) {
-            instance = new SingleTracker();
-        }
-        return instance;
-    }
 }
