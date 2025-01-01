@@ -44,8 +44,9 @@ public class PasswordValidator {
         if (!specSymbol) {
             throw new IllegalArgumentException("Password should contain at least one special symbol");
         }
-        for (String words: FORBIDDEN) {
-            if (password.toLowerCase().contains(words)) {
+        String passwordLowerCase = password.toLowerCase();
+        for (String word: FORBIDDEN) {
+            if (passwordLowerCase.contains(word)) {
                 throw new IllegalArgumentException("Password shouldn't contain substrings: " +
                         "qwerty, 12345, password, admin, user");
             }
