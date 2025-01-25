@@ -26,4 +26,21 @@ class PhoneDictionaryTest {
         ArrayList<Person> persons = phones.find("Boris");
         assertThat(persons).isEmpty();
     }
+
+    @Test
+    public void whenFindTwoFromThreeByNames() {
+        PhoneDictionary phones = new PhoneDictionary();
+        phones.add(
+                new Person("Boris", "Ivanov", "54653213", "Omsk")
+        );
+        phones.add(
+                new Person("Ivan", "Shultch", "4534321", "Moscow")
+        );
+        phones.add(
+                new Person("Maks", "Borisov", "1435215321", "Omsk")
+        );
+        ArrayList<Person> persons = phones.find("Omsk");
+        assertThat(persons.get(0).getAddress()).isEqualTo("Omsk");
+        assertThat(persons.get(1).getAddress()).isEqualTo("Omsk");
+    }
 }
