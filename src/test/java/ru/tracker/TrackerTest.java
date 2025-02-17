@@ -1,8 +1,6 @@
 package ru.tracker;
 
 import org.junit.Test;
-import org.junit.jupiter.api.Disabled;
-
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -22,12 +20,11 @@ public class TrackerTest {
     public void whenTestFindById() {
         Tracker tracker = new Tracker();
         Item bug = new Item("Bug");
-        List<Item> item = tracker.add(bug);
+        tracker.add(bug);
         Item result = tracker.findById(bug.getId());
         assertThat(result.getName()).isEqualTo("Bug");
     }
 
-    @Disabled
     @Test
     public void whenTestFindAll() {
         Tracker tracker = new Tracker();
@@ -39,7 +36,6 @@ public class TrackerTest {
         assertThat(result.get(0).getName()).isEqualTo(first.getName());
     }
 
-    @Disabled
     @Test
     public void whenTestFindByNameCheckArrayLength() {
         Tracker tracker = new Tracker();
@@ -54,7 +50,6 @@ public class TrackerTest {
         assertThat(result.size()).isEqualTo(3);
     }
 
-    @Disabled
     @Test
     public void whenTestFindByNameCheckSecondItemName() {
         Tracker tracker = new Tracker();
@@ -69,7 +64,6 @@ public class TrackerTest {
         assertThat(result.get(1).getName()).isEqualTo(second.getName());
     }
 
-    @Disabled
     @Test
     public void whenReplaceItemIsSuccessful() {
         Tracker tracker = new Tracker();
@@ -81,7 +75,6 @@ public class TrackerTest {
         assertThat(tracker.findById(id).getName()).isEqualTo("Bug with description");
     }
 
-    @Disabled
     @Test
     public void whenReplaceItemIsNotSuccessful() {
         Tracker tracker = new Tracker();
@@ -93,7 +86,6 @@ public class TrackerTest {
         assertThat(result).isFalse();
     }
 
-    @Disabled
     @Test
     public void whenDeleteItemIsSuccessful() {
         Tracker tracker = new Tracker();
@@ -104,7 +96,6 @@ public class TrackerTest {
         assertThat(tracker.findById(id)).isNull();
     }
 
-    @Disabled
     @Test
     public void whenDeleteItemIsNotSuccessful() {
         Tracker tracker = new Tracker();
