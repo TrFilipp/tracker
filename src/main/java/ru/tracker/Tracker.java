@@ -7,15 +7,14 @@ public class Tracker {
 
     private List<Item> itemList = new ArrayList<>();
     private final Item[] items = new Item[100];
-    //private int ids = 1;
+
+    private int ids = 1;
     private int size = 0;
 
-    public List<Item> add(Item item) { //изменил
-        /*item.setId(ids++);
-        items[size++] = item;
-        return item;*/
+    public Item add(Item item) {
+        item.setId(ids++);
         itemList.add(item);
-        return itemList;
+        return item;
     }
 
     public List<Item> findAll() {
@@ -36,12 +35,11 @@ public class Tracker {
         return rsl;
     }
 
-    public boolean replace(int id, Item item) { //изменил
+    public boolean replace(int id, Item item) {
         int index = indexOf(id);
         if (index != -1) {
-            /*item.setId(id);
-            items[index] = item;*/
-            itemList.add(index, item);
+            item.setId(id);
+            itemList.set(index, item);
         }
         return index != -1;
     }

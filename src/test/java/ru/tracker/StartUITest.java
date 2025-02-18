@@ -7,7 +7,6 @@ import ru.tracker.input.MockInput;
 import ru.tracker.output.MockOutput;
 import ru.tracker.output.Output;
 
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -81,10 +80,10 @@ class StartUITest {
     void whenReplaceItemTestOutputIsSuccessfully() {
         Output output = new MockOutput();
         Tracker tracker = new Tracker();
-        List<Item> one = tracker.add(new Item("test1"));
+        Item one = tracker.add(new Item("test1"));
         String replaceName = "New Test Name";
         Input input = new MockInput(
-                new String[] {"0", String.valueOf(one.get(0)), replaceName, "1"}
+                new String[] {"0", String.valueOf(one.getId()), replaceName, "1"}
         );
         UserAction[] actions = new UserAction[]{
                 new Replace(output),
@@ -109,9 +108,9 @@ class StartUITest {
     void whenFindAllItemTestOutputIsSuccessfully() {
         Output output = new MockOutput();
         Tracker tracker = new Tracker();
-        List<Item> one = tracker.add(new Item("test1"));
-        List<Item> two = tracker.add(new Item("test2"));
-        List<Item> three = tracker.add(new Item("test3"));
+        Item one = tracker.add(new Item("test1"));
+        Item two = tracker.add(new Item("test2"));
+        Item three = tracker.add(new Item("test3"));
         Input input = new MockInput(
                 new String[] {"0", "1"}
         );
@@ -140,11 +139,11 @@ class StartUITest {
     void whenFindByNameItemTestOutputIsSuccessfully() {
         Output output = new MockOutput();
         Tracker tracker = new Tracker();
-        List<Item> one = tracker.add(new Item("test1"));
-        List<Item> two = tracker.add(new Item("test2"));
-        List<Item> three = tracker.add(new Item("test1"));
+        Item one = tracker.add(new Item("test1"));
+        Item two = tracker.add(new Item("test2"));
+        Item three = tracker.add(new Item("test1"));
         Input input = new MockInput(
-                new String[] {"0", String.valueOf(one.get(Integer.parseInt("test"))), "1"}
+                new String[] {"0", String.valueOf(one.getName()), "1"}
         );
         UserAction[] actions = new UserAction[]{
                 new FindByIdName(output),
@@ -170,11 +169,11 @@ class StartUITest {
     void whenFindByIdItemTestOutputIsSuccessfully() {
         Output output = new MockOutput();
         Tracker tracker = new Tracker();
-        List<Item> one = tracker.add(new Item("test1"));
-        List<Item> two = tracker.add(new Item("test2"));
-        List<Item> three = tracker.add(new Item("test3"));
+        Item one = tracker.add(new Item("test1"));
+        Item two = tracker.add(new Item("test2"));
+        Item three = tracker.add(new Item("test3"));
         Input input = new MockInput(
-                new String[] {"0", String.valueOf(two.get(2)), "1"}
+                new String[] {"0", String.valueOf(two.getId()), "1"}
         );
         UserAction[] actions = new UserAction[]{
                 new FindById(output),
