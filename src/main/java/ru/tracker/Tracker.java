@@ -16,16 +16,15 @@ public class Tracker {
     }
 
     public List<Item> findAll() {
-        return items;
+        return new ArrayList<>(items);
     }
 
     public List<Item> findByName(String key) {
         List<Item> rsl = new ArrayList<>();
-        int sizeOfRsl = 0;
         for (int i = 0; i < items.size(); i++) {
             Item item = items.get(i);
             if (key.equals(item.getName())) {
-                rsl.add(sizeOfRsl++, item);
+                rsl.add(item);
             }
         }
         return rsl;
@@ -33,11 +32,13 @@ public class Tracker {
 
     public boolean replace(int id, Item item) {
         int index = indexOf(id);
+        boolean rsl = false;
         if (index != -1) {
             item.setId(id);
             items.set(index, item);
+            rsl = true;
         }
-        return index != -1;
+        return rsl;
     }
 
    private int indexOf(int id) {

@@ -1,16 +1,18 @@
 package ru.tracker.input;
 
+import java.util.List;
+
 public class MockInput implements Input {
-    public String[] answer;
+    public List<String> answer;
     private int position = 0;
 
-    public MockInput(String[] answer) {
+    public MockInput(List<String> answer) {
         this.answer = answer;
     }
 
     @Override
     public String askStr(String question) {
-        return answer[position++];
+        return answer.get(position++);
     }
 
     @Override
