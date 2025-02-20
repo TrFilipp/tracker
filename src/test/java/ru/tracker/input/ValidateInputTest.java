@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import ru.tracker.output.MockOutput;
 import ru.tracker.output.Output;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ValidateInputTest {
@@ -11,7 +13,7 @@ class ValidateInputTest {
     void whenInvalidInput() {
         Output output = new MockOutput();
         Input in = new MockInput(
-                new String[] {"one", "1"}
+                List.of("one", "1")
         );
         ValidateInput input = new ValidateInput(output, in);
         int selected = input.askInt("Enter menu:");
@@ -22,7 +24,7 @@ class ValidateInputTest {
     void whenValidInput() {
         Output output = new MockOutput();
         Input in = new MockInput(
-                new String[] {"1"}
+                List.of("1")
         );
         ValidateInput input = new ValidateInput(output, in);
         int selected = input.askInt("Enter menu:");
@@ -33,7 +35,7 @@ class ValidateInputTest {
     void whenMultiValidInput() {
         Output output = new MockOutput();
         Input in = new MockInput(
-                new String[] {"1", "3", "4"}
+                List.of("1", "3", "4")
         );
         ValidateInput input = new ValidateInput(output, in);
         int selectedFirst = input.askInt("Enter menu:");
@@ -48,7 +50,7 @@ class ValidateInputTest {
     void whenNegativeInput() {
         Output output = new MockOutput();
         Input in = new MockInput(
-                new String[] {"-1"}
+                List.of("-1")
         );
         ValidateInput input = new ValidateInput(output, in);
         int selected = input.askInt("Enter menu:");
