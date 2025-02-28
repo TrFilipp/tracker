@@ -1,7 +1,6 @@
 package ru.queue;
 
 import java.util.Deque;
-import java.util.Iterator;
 
 public class ReconstructPhrase {
     private final Deque<Character> descendingElements;
@@ -26,9 +25,9 @@ public class ReconstructPhrase {
 
     private String getDescendingElements() {
         StringBuilder builder = new StringBuilder();
-        Iterator<Character> iterator = descendingElements.descendingIterator();
-        for (int i = 0; i < descendingElements.size(); i++) {
-            builder.append(iterator.next());
+        int size = descendingElements.size();
+        for (int i = 0; i < size; i++) {
+            builder.append(descendingElements.pollLast());
         }
         return builder.toString();
     }
