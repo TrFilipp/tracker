@@ -14,7 +14,6 @@ class BankServiceTest {
         assertThat(bank.findByPassport("3434")).isEqualTo(user);
     }
 
-
     @Test
     void deleteUserIsTrue() {
         User first = new User("3434", "Ivan Ivanov");

@@ -15,7 +15,6 @@ public class BankService {
         users.putIfAbsent(user, new ArrayList<>());
     }
 
-
     public void deleteUser(String passport) {
         users.remove(findByPassport(passport));
     }
@@ -35,7 +34,6 @@ public class BankService {
         }
         return rsl;
     }
-
 
     public Account findByRequisite(String passport, String requisite) {
         Account rsl = null;
