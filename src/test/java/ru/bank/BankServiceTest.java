@@ -1,6 +1,5 @@
 package ru.bank;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -86,7 +85,6 @@ class BankServiceTest {
         assertThat(bank.findByRequisite(user.getPassport(), "113").getBalance()).isEqualTo(200D);
     }
 
-    @Disabled
     @Test
     void transferMoneyOkCheckSourceAccount() {
         User user = new User("3434", "Ivan Ivanov");
@@ -98,7 +96,6 @@ class BankServiceTest {
         assertThat(bank.findByRequisite(user.getPassport(), "5546").getBalance()).isEqualTo(0D);
     }
 
-    @Disabled
     @Test
     void transferMoneySourceNull() {
         User user = new User("3434", "Ivan Ivanov");
@@ -112,7 +109,6 @@ class BankServiceTest {
         assertThat(bank.findByRequisite(user.getPassport(), "5546").getBalance()).isEqualTo(150D);
     }
 
-    @Disabled
     @Test
     void transferMoneyDontHaveEnoughMoney() {
         User user = new User("3434", "Ivan Ivanov");
@@ -124,7 +120,6 @@ class BankServiceTest {
         assertThat(bank.findByRequisite(user.getPassport(), "113").getBalance()).isEqualTo(50D);
     }
 
-    @Disabled
     @Test
     void transferMoneyDestinationIsNull() {
         User user = new User("3434", "Ivan Ivanov");
