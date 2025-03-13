@@ -3,10 +3,7 @@ package ru.bank;
 import ru.bank.Account;
 import ru.bank.User;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class BankService {
     private final Map<User, List<Account>> users = new HashMap<>();
@@ -20,9 +17,14 @@ public class BankService {
     }
 
     public void addAccount(String passport, Account account) {
-        List<Account> accounts = new ArrayList<>();
-        accounts.add(account);
-        users.put(findByPassport(passport), accounts);
+        User user = findByPassport(passport);
+        if(user != null) {
+            List<Account> accountList = users.get(user);
+            if (accountList.isEmpty()) {
+                accountList.add(account);
+            }
+            users.put(user, accountList);
+        }
     }
 
     public User findByPassport(String passport) {
@@ -30,6 +32,7 @@ public class BankService {
         for (User user : users.keySet()) {
             if (user.getPassport().equals(passport)) {
                rsl = user;
+               break;
             }
         }
         return rsl;
@@ -37,9 +40,14 @@ public class BankService {
 
     public Account findByRequisite(String passport, String requisite) {
         Account rsl = null;
-        for (Account account: users.get(findByPassport(passport))) {
-            if (account.getRequisite().equals(requisite)) {
+        User user = findByPassport(passport);
+        if(user == null) {
+            return rsl;
+        }
+        for(Account account: users.get(user)) {
+            if(account.getRequisite().contains(requisite)) {
                 rsl = account;
+                break;
             }
         }
         return rsl;
@@ -64,5 +72,15 @@ public class BankService {
 
     public List<Account> getAccounts(User user) {
         return users.get(user);
+    }
+
+    public static void main(String[] args) {
+        User user = new User("321", "Ivan");
+        BankService bank = new BankService();
+        bank.addUser(user);
+        Account account = new Account("123", 15D);
+        bank.addAccount(user.getPassport(), account);
+        Account find = bank.findByRequisite(user.getPassport(), account.getRequisite());
+        System.out.println(find.getRequisite() + " + " + find.getBalance());
     }
 }
