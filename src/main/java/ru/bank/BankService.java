@@ -42,6 +42,7 @@ public class BankService {
             for (Account account : users.get(user)) {
                 if (account.getRequisite().equals(requisite)) {
                     rsl = account;
+                    break;
                 }
             }
         }
