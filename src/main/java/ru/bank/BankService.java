@@ -52,16 +52,16 @@ public class BankService {
     public boolean transferMoney(String sourcePassport, String sourceRequisite, String destinationPassport,
                                  String destinationRequisite, double amount) {
         boolean result = false;
-        if (findByRequisite(sourcePassport, sourceRequisite) == null || findByRequisite(destinationPassport, destinationRequisite) == null) {
+        Account source = findByRequisite(sourcePassport, sourceRequisite);
+        Account destination = findByRequisite(destinationPassport, destinationRequisite);
+        if (source == null || destination == null) {
             return result;
         }
-        double balanceOne = findByRequisite(sourcePassport, sourceRequisite).getBalance();
-        double balanceTwo = findByRequisite(destinationPassport, destinationRequisite).getBalance();
-        if (balanceOne >= amount) {
-            balanceOne -= amount;
-            balanceTwo += amount;
-            findByRequisite(sourcePassport, sourceRequisite).setBalance(balanceOne);
-            findByRequisite(destinationPassport, destinationRequisite).setBalance(balanceTwo);
+        double sorceBalance = source.getBalance();
+        double destinationBalance = destination.getBalance();
+        if (sorceBalance >= amount) {
+            source.setBalance(sorceBalance -= amount);
+            destination.setBalance(destinationBalance += amount);
             result = true;
         } else {
             return result;
@@ -71,15 +71,5 @@ public class BankService {
 
     public List<Account> getAccounts(User user) {
         return users.get(user);
-    }
-
-    public static void main(String[] args) {
-        User user = new User("321", "Ivan");
-        BankService bank = new BankService();
-        bank.addUser(user);
-        Account account = new Account("123", 15D);
-        bank.addAccount(user.getPassport(), account);
-        Account find = bank.findByRequisite(user.getPassport(), account.getRequisite());
-        System.out.println(find.getRequisite() + " + " + find.getBalance());
     }
 }
