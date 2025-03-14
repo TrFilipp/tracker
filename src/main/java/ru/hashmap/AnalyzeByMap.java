@@ -9,20 +9,18 @@ public class AnalyzeByMap {
         double sum = 0;
         double sumAll = 0;
         int subjectAll = 0;
-
         for (Pupil pupil : pupils) {
-            pupil.subjects().size();
+            subjectAll += pupil.subjects().size();
             for (Subject subject : pupil.subjects()) {
                 scores.add(subject.score());
-                subjectAll++;
             }
             for (int i = 0; i < scores.size(); i++) {
                 sum += scores.get(i);
             }
-            sum /= subjectAll;
             sumAll += sum;
             sum = 0;
         }
+        sumAll /= subjectAll;
         return sumAll;
     }
 
