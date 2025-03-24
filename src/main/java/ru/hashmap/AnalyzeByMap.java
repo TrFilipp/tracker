@@ -4,19 +4,15 @@ import java.util.*;
 
 public class AnalyzeByMap {
     public static double averageScore(List<Pupil> pupils) {
-        List<Integer> scores = new ArrayList<>();
-        double sum = 0;
         double sumAll = 0;
         int subjectAll = 0;
         for (Pupil pupil : pupils) {
+            double sum = 0;
             subjectAll += pupil.subjects().size();
             for (Subject subject : pupil.subjects()) {
-                scores.add(subject.score());
-                sum += scores.get(scores.size() - 1);
+                sum += subject.score();
             }
             sumAll += sum;
-            sum = 0;
-            scores.clear();
         }
         sumAll /= subjectAll;
         return sumAll;
@@ -25,15 +21,14 @@ public class AnalyzeByMap {
     public static List<Label> averageScoreByPupil(List<Pupil> pupils) {
         List<Integer> scores = new ArrayList<>();
         List<Label> label = new ArrayList<>();
-        double sum = 0;
         for (Pupil pupil : pupils) {
+            double sum = 0;
             for (Subject subject : pupil.subjects()) {
                 scores.add(subject.score());
                 sum += scores.get(scores.size() - 1);
             }
             sum /= scores.size();
             label.add(new Label(pupil.name(), sum));
-            sum = 0;
             scores.clear();
         }
         return label;
@@ -54,14 +49,13 @@ public class AnalyzeByMap {
     public static Label bestStudent(List<Pupil> pupils) {
         List<Integer> scores = new ArrayList<>();
         List<Label> label = new ArrayList<>();
-        int sum = 0;
         for (Pupil pupil : pupils) {
+            int sum = 0;
             for (Subject subject : pupil.subjects()) {
                 scores.add(subject.score());
                 sum += scores.get(scores.size() - 1);
             }
             label.add(new Label(pupil.name(), sum));
-            sum = 0;
             scores.clear();
         }
         Collections.sort(label);
