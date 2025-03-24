@@ -78,7 +78,7 @@ public class AnalyzeByMap {
         return labels.get(labels.size() - 1);
     }
 
-    private static LinkedHashMap<String, Integer> subjectAdd (List<Pupil> pupils) {
+    private static LinkedHashMap<String, Integer> subjectAdd(List<Pupil> pupils) {
         LinkedHashMap<String, Integer> scoreBySubject = new LinkedHashMap<>();
         for (Pupil pupil: pupils) {
             for (Subject subject: pupil.subjects()) {
