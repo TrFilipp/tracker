@@ -4,18 +4,15 @@ import java.util.*;
 
 public class AnalyzeByMap {
     public static double averageScore(List<Pupil> pupils) {
-        double sumAll = 0;
-        int subjectAll = 0;
+        double sum = 0;
+        int count = 0;
         for (Pupil pupil : pupils) {
-            double sum = 0;
-            subjectAll += pupil.subjects().size();
             for (Subject subject : pupil.subjects()) {
                 sum += subject.score();
+                count++;
             }
-            sumAll += sum;
         }
-        sumAll /= subjectAll;
-        return sumAll;
+        return sum / count;
     }
 
     public static List<Label> averageScoreByPupil(List<Pupil> pupils) {
