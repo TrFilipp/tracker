@@ -2,9 +2,9 @@ package ru.tracker;
 
 import java.util.Comparator;
 
-public class ItemDescByName implements Comparator<Item>{
+public class ItemAscByName implements Comparator<Item> {
     @Override
     public int compare(Item o1, Item o2) {
-        return o2.getName().compareTo(o1.getName());
+        return o1.getName().compareTo(o2.getName());
     }
 }
