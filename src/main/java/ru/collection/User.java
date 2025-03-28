@@ -12,21 +12,16 @@ public class User implements Comparable<User> {
         this.age = age;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
     @Override
     public int compareTo(User o) {
-        return o.getName().compareTo(name) == 0 ? Integer.compare(age, o.getAge()) : name.compareTo(o.getName());
+        return name.compareTo(o.name) == 0 ? Integer.compare(age, o.age) : name.compareTo(o.name);
     }
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return age == user.age && Objects.equals(name, user.name);
