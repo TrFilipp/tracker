@@ -276,9 +276,9 @@ class JobTest {
     }
 
     @Test
-    public void whenComparatorAscPriorityAndAscPriorityAndAscPriority() {
-        Comparator<Job> cmpPriorityPriorityPriority = new JobAscByPriority().thenComparing(new JobAscByPriority()).thenComparing(new JobAscByPriority());
-        int rsl = cmpPriorityPriorityPriority.compare(
+    public void whenComparatorFourCombination() {
+        Comparator<Job> cmp = new JobAscByPriority().thenComparing(new JobDescByName()).thenComparing(new JobDescByPriority()).thenComparing(new JobAscByName());
+        int rsl = cmp.compare(
                 new Job("Impl task", 0),
                 new Job("Fix bug", 1)
         );
