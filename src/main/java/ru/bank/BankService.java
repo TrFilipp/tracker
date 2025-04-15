@@ -2,17 +2,36 @@ package ru.bank;
 
 import java.util.*;
 
+/**
+ *
+ */
 public class BankService {
+    /**
+     *
+     */
     private final Map<User, List<Account>> users = new HashMap<>();
 
+    /**
+     *
+     * @param user
+     */
     public void addUser(User user) {
         users.putIfAbsent(user, new ArrayList<>());
     }
 
+    /**
+     *
+     * @param passport
+     */
     public void deleteUser(String passport) {
         users.remove(findByPassport(passport));
     }
 
+    /**
+     *
+     * @param passport
+     * @param account
+     */
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
         if (user != null) {
@@ -24,6 +43,11 @@ public class BankService {
         }
     }
 
+    /**
+     *
+     * @param passport
+     * @return
+     */
     public User findByPassport(String passport) {
         User rsl = null;
         for (User user : users.keySet()) {
@@ -35,6 +59,12 @@ public class BankService {
         return rsl;
     }
 
+    /**
+     *
+     * @param passport
+     * @param requisite
+     * @return
+     */
     public Account findByRequisite(String passport, String requisite) {
         Account rsl = null;
         User user = findByPassport(passport);
@@ -49,6 +79,15 @@ public class BankService {
         return rsl;
     }
 
+    /**
+     *
+     * @param sourcePassport
+     * @param sourceRequisite
+     * @param destinationPassport
+     * @param destinationRequisite
+     * @param amount
+     * @return
+     */
     public boolean transferMoney(String sourcePassport, String sourceRequisite, String destinationPassport,
                                  String destinationRequisite, double amount) {
         boolean result = false;
@@ -68,6 +107,11 @@ public class BankService {
         return result;
     }
 
+    /**
+     *
+     * @param user
+     * @return
+     */
     public List<Account> getAccounts(User user) {
         return users.get(user);
     }
