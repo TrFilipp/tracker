@@ -53,4 +53,14 @@ class StringCompareTest {
         );
         assertThat(result).isLessThan(0);
     }
+
+    @Test
+    public void whenThirdCharOfLeftLessThanRightShouldBeNegative() {
+        StringCompare compare = new StringCompare();
+        int result = compare.compare(
+                "aaa",
+                "aab"
+        );
+        assertThat(result).isLessThan(0);
+    }
 }
