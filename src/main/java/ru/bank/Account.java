@@ -9,7 +9,7 @@ import java.util.Objects;
  */
 public class Account {
     /**
-     * Строка реквизиты и числовое значание баланса аккаунта
+     * Строка реквизиты и числовое значение баланса аккаунта
      */
     private String requisite;
     private double balance;
