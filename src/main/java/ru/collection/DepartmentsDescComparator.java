@@ -1,8 +1,6 @@
 package ru.collection;
 
-import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 
 /**
  * Класс реализует переопределённый метод для сравнения строк, благодаря которому будет произведена сортировка по убывающему
@@ -18,10 +16,8 @@ public class DepartmentsDescComparator implements Comparator<String> {
      */
     @Override
     public int compare(String left, String right) {
-        ArrayList<String> tempLeft = new ArrayList<>(List.of(left.split("/")));
-        ArrayList<String> tempRight = new ArrayList<>(List.of(right.split("/")));
-        int rsl = tempRight.get(0).compareTo(tempLeft.get(0));
-        if (tempRight.get(0).compareTo(tempLeft.get(0)) == 0)  {
+        int rsl = right.split("/")[0].compareTo(left.split("/")[0]);
+        if (rsl == 0)  {
             rsl = left.compareTo(right);
         }
         return rsl;
